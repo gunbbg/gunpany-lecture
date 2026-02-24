@@ -202,7 +202,8 @@ body {
   transform: translateX(100%);
 }
 
-.contact-section {
+.contact-section,
+.comments-section {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
