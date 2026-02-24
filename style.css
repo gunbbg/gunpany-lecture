@@ -202,9 +202,15 @@ body {
   transform: translateX(100%);
 }
 
-.contact-section {
+.contact-section,
+.comments-section {
   margin-top: 4rem;
   margin-bottom: 2rem;
+}
+
+#disqus_thread {
+  min-height: 300px;
+  width: 100%;
 }
 
 .contact-card {
