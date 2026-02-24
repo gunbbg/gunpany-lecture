@@ -202,6 +202,86 @@ body {
   transform: translateX(100%);
 }
 
+.contact-section {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lifted);
+  border: 1px solid oklch(100% 0 0 / 10%);
+  text-align: left;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-sub);
+}
+
+.input-group input,
+.input-group textarea {
+  background: oklch(100% 0 0 / 5%);
+  border: 1px solid oklch(100% 0 0 / 10%);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: oklch(100% 0 0 / 10%);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
 /* Color schemes for balls */
 .ball-range-1 { border-top: 4px solid #fbc02d; }
 .ball-range-2 { border-top: 4px solid #1976d2; }
