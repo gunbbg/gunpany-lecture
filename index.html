@@ -61,9 +61,15 @@
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function () {
-                this.page.url = window.location.href;
-                this.page.identifier = window.location.pathname;
+                // 실제 배포될 GitHub Pages 주소로 고정하여 인식률을 높입니다.
+                this.page.url = "https://gunbbg.github.io/gunpany-lecture/"; 
+                this.page.identifier = "gunpany-lecture-root";
+                this.language = 'ko'; // 한국어 설정
             };
+            
+            // 개발 환경에서도 로드를 시도하도록 설정
+            var disqus_developer = 1; 
+
             (function() { 
                 var d = document, s = d.createElement('script');
                 s.src = 'https://gunpany-1.disqus.com/embed.js';
