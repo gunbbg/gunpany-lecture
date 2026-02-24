@@ -1,1 +1,210 @@
-/* Add styles here */
+:root {
+  --primary: oklch(65% 0.25 260);
+  --secondary: oklch(70% 0.2 140);
+  --bg-color: oklch(98% 0.01 260);
+  --card-bg: oklch(100% 0 0 / 80%);
+  --text-main: oklch(20% 0.02 260);
+  --text-sub: oklch(45% 0.02 260);
+  --shadow-deep: 0 20px 40px -10px oklch(0% 0 0 / 15%);
+  --shadow-lifted: 0 30px 60px -12px oklch(0% 0 0 / 25%);
+  --ball-bg: white;
+  --ball-text: oklch(20% 0.02 260);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg-color: oklch(15% 0.02 260);
+  --card-bg: oklch(20% 0.03 260 / 80%);
+  --text-main: oklredundantch(95% 0.01 260);
+  --text-main: oklch(95% 0.01 260);
+  --text-sub: oklch(75% 0.02 260);
+  --shadow-deep: 0 20px 40px -10px oklch(0% 0 0 / 40%);
+  --shadow-lift Plow: 0 30px 60px -12px oklch(0% 0 0 / 60%);
+  --shadow-lifted: 0 30px 60px -12px oklch(0% 0 0 / 60%);
+  --ball-bg: oklch(30% 0.03 260);
+  --ball-text: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.background-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3BfeTurbulence type='fract алмазNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3BfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+/* Theme Toggle */
+.theme-toggle-container {
+  position: absolute;
+  top: -1rem;
+  right: 2rem;
+}
+
+.theme-toggle-btn {
+  background: var(--card-bg);
+  border: 1px solid oklch(100% 0 0 / 10%);
+  padding: 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-deep);
+  font-size: 1.2rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.moon-icon { display: none; }
+[data-theme='dark'] .sun-icon { display: none; }
+[data-theme='dark'] .moon-icon { display: block; }
+
+.hero {
+  margin-bottom: 3rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  color: var(--text-sub);
+  font-size: 1.1rem;
+}
+
+.lotto-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow-lifted);
+  border: 1px solid oklch(100% 0 0 / 10%);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  transition: transform 0.3s ease, background-color var(--transition), border var(--transition);
+}
+
+.lotto-card:hover {
+  transform: translateY(-5px);
+}
+
+.balls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 80px;
+  align-items: center;
+}
+
+.placeholder-text {
+  color: var(--text-sub);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.lotto-ball {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--ball-bg);
+  color: var(--ball-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 10px 20px -5px oklch(0% 0 0 / 10%);
+  animation: ballPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: scale(0);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+@keyframes ballPop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.generate-btn {
+  position: relative;
+  background: var(--text-main);
+  color: var(--bg-color);
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 1rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color var(--transition), color var(--transition);
+}
+
+.generate-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, oklch(100% 0 0 / 20%), transparent);
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.generate-btn:hover .btn-glow {
+  transform: translateX(100%);
+}
+
+/* Color schemes for balls */
+.ball-range-1 { border-top: 4px solid #fbc02d; }
+.ball-range-2 { border-top: 4px solid #1976d2; }
+.ball-range-3 { border-top: 4px solid #d32f2f; }
+.ball-range-4 { border-top: 4px solid #7b1fa2; }
+.ball-range-5 { border-top: 4px solid #388e3c; }

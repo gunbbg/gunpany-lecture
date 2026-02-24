@@ -3,12 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Lotto Number Recommender</title>
   <link href='/style.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="background-texture"></div>
+  <main class="app-container">
+    <div class="theme-toggle-container">
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
+
+    <header class="hero">
+      <h1 class="hero-title">Lotto Number Recommender</h1>
+      <p class="hero-subtitle">Get your lucky numbers with a single click!</p>
+    </header>
+    
+    <section class="card-section">
+      <div class="lotto-card">
+        <div id="balls-container" class="balls-container">
+          <!-- Lotto balls will appear here -->
+          <div class="placeholder-text">Press the button to generate!</div>
+        </div>
+        
+        <button id="generate-btn" class="generate-btn">
+          Generate Numbers
+          <div class="btn-glow"></div>
+        </button>
+      </div>
+    </section>
+  </main>
+  
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
