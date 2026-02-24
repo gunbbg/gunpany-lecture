@@ -202,13 +202,7 @@ body {
   transform: translateX(100%);
 }
 
-#disqus_thread {
-  min-height: 300px;
-  width: 100%;
-}
-
-.contact-section,
-.comments-section {
+.contact-section {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
